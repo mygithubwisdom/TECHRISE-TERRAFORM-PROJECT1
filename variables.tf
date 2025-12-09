@@ -217,3 +217,40 @@ variable "nat_gateway_name" {
   description = "The name of the NAT Gateway"
   type        = string
 }
+
+# Monitoring module inputs
+variable "monitoring_alarm_email_addresses" {
+  description = "Email addresses to subscribe to CloudWatch alarms (empty to skip)."
+  type        = list(string)
+  default     = []
+}
+
+variable "monitoring_alarm_name_prefix" {
+  description = "Prefix for monitoring alarm names and log groups."
+  type        = string
+  default     = "ec2-monitoring"
+}
+
+variable "monitoring_create_sns_topic" {
+  description = "Create a dedicated SNS topic for monitoring alerts."
+  type        = bool
+  default     = true
+}
+
+variable "monitoring_existing_sns_topic_arn" {
+  description = "Use an existing SNS topic ARN instead of creating a new one."
+  type        = string
+  default     = ""
+}
+
+variable "monitoring_cpu_high_threshold" {
+  description = "CPU utilization percentage that raises an alarm."
+  type        = number
+  default     = 80
+}
+
+variable "monitoring_network_in_threshold_bytes" {
+  description = "Inbound network bytes per period that raises an alarm."
+  type        = number
+  default     = 104857600 # 100 MB
+}

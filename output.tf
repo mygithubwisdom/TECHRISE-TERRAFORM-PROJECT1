@@ -49,3 +49,14 @@ output "private_route_table_id" {
   description = "The ID of the private route table"
   value       = aws_route_table.PrivateRouteTable.id
 }
+
+# Monitoring outputs
+output "monitoring_sns_topic_arn" {
+  description = "SNS topic used for monitoring alerts (created or provided)."
+  value       = module.monitoring.sns_topic_arn
+}
+
+output "monitoring_flow_log_group_name" {
+  description = "CloudWatch log group capturing VPC flow logs."
+  value       = module.monitoring.flow_log_group_name
+}
